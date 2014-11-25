@@ -12,14 +12,15 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  socket: /tmp/mysql.sock
   pool: 5
-  username: root
-  password:
+  username: munchkin
+  password: YIKEvs2ZKaAo9BTm8e2ZdW22m
   host: localhost
 
 development:
   <<: *default
-  database: Munchkin_development
+  database: Munchkin
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
