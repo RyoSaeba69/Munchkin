@@ -4,13 +4,13 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'ed7dc80be103199f895fee506e6ee88957d4b57db6836ab532fa536353555329b2e6509e153aa6af06faa80498aa0c90e48b217c5950f7b04846718b786e20cb'
+  # config.secret_key = '3000ed12f98675a4b6e516e2db605741d1bf061b2b1501bb072fb7952f5b47068680db02c0d3efe11483fb87528b2eef145fdc8a1f4dc4ab12509dbac7d06d66'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'nutri-info@ctai.fr'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -21,6 +21,8 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
+  config.authentication_keys = [ :login ]
+  config.secret_key = '7ecbf30ce339fe08576363a9667e0f69cb221208f431990607b0d2aeeab335e9300af510767a105205a992365b04c7fc3f1f6f7b389df3469dfe837c61e7e146'
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -97,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '997fb590a031633cf6db19480d3cf906af25fe9d8a99e2b6814b3392a65cf4792b13284f1a5d04f2aff6ad2f5a6c377873f07324a9b3cb8a7ab07e083f5a9943'
+  # config.pepper = '79ac435db66ebc9143f5ef210909e13e460bbc12c05310aa2f75ce658d5f1e22e2ec733cd570426c643abd5ea5591a19d265406eb050e50dc6cc70be51536027'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
