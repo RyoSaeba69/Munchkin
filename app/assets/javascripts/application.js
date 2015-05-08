@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require jquery_nested_form
+//= require ckeditor/init
+//= require bootstrap-multiselect
+//= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
+//= require select2
+//= require select2_locale_fr
 //= require_tree .

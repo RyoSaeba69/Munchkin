@@ -1,0 +1,10 @@
+<% if target.errors.any? %>
+    <div id="error_explanation" class="panel">
+      <h5>Impossible d'enregistrer : <%= pluralize(target.errors.count, "erreur") %></h5>
+      <ul>
+        <% target.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

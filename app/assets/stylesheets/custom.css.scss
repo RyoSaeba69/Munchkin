@@ -1,15 +1,204 @@
+$component-active-bg: #28BF41;
+
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 /* universal */
 
-html {
-  overflow-y: scroll;
-}
-
 body {
-  padding-top: 60px;
+  background-color: #f5f5f5;
 }
 
+main {
+  padding-top: 70px;
+  min-height: 700px;
+  background-color: #ffffff;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #28BF41;
+}
+
+a:hover, a:active, a:focus {
+  color: #2BCC46;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+div[role=title-row] h3 {
+  margin: 0 0 2%
+}
+
+/*** Tableau ***/
+tr.disabled td {
+  font-style: italic;
+  color: darkgray;
+}
+
+/*** Tableau ***/
+
+/*** Margin 10 ***/
+.margin-r10 {
+  margin-right: 10px;
+}
+
+;
+.margin-l10 {
+  margin-left: 10px;
+}
+.margin-l150 {
+  margin-left: 150px;
+}
+
+;
+.margin-t10 {
+  margin-top: 10px;
+}
+
+;
+.margin-b10 {
+  margin-bottom: 10px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.border-1-g {
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+.border-l1-g {
+  border-left: 1px solid lightgray;
+  padding: 10px;
+}
+
+.image-missing {
+  font-size: 7em;
+  color: #d6d6d6;
+}
+
+.tab-content {
+  margin-top: 20px;
+}
+
+
+.label {
+  font-weight: normal;
+}
+
+th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc {
+  background-image: image-url('sort_asc.png');
+}
+
+th .desc {
+  background-image: image-url('sort_desc.png');
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.modal-h420 {
+  height: 470px;
+  overflow-y: auto;
+}
+
+.spoiler1 {
+  display: none;
+}
+
+.handle {
+  color: silver;
+  margin-right: 5px;
+  //cursor: move;
+}
+
+h4.num_version {
+  color: $component-active-bg;
+}
+
+/*** End Margin 10 ***/
+
+/*** Form ***/
+.form {
+  @extend .col-md-6;
+}
+
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+}
+
+.form-actions, .block-bottom {
+  margin-bottom: 50px;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+#error_explanation h2 {
+  font-size: 16px;
+}
+
+.field_with_errors {
+  @extend .has-error;
+}
+
+.form-group.required .control-label:after {
+  content: " *";
+  color: red;
+}
+
+/*** Auth Form ***/
+.authform {
+  padding-top: 30px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.authform form {
+  @extend .well;
+  @extend .well-lg;
+  padding-bottom: 40px;
+}
+
+.authform .right {
+  float: right !important;
+}
+
+.authform fieldset {
+  @extend .well;
+}
 
 /* header */
 
@@ -17,39 +206,309 @@ body {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
+}
+
+/*** Nav bar ***/
+/*** Theme navbar ***/
+/*** http://work.smarchal.com/twbscolor/ ***/
+$bgDefault: #28BF41;
+$bgHighlight: #2BCC46;
+$colDefault: #ecf0f1;
+$colHighlight: #ecdbff;
+$dropDown: false;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-text {
+    color: $colDefault;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover, &:focus {
+          color: $colHighlight;
+        }
+      }
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li > a {
+            color: $colDefault;
+            &:hover, &:focus {
+              color: $colHighlight;
+              background-color: $bgHighlight;
+            }
+          }
+          .divider {
+            background-color: $bgHighlight;
+          }
+        }
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight;
+    }
+    .icon-bar {
+      background-color: $colDefault;
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault;
+  }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight;
+    }
   }
 }
 
-/* footer */
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight;
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+}
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid slategray;
-  color: lightgray;
-  a {
-    color: gray;
-    &:hover {
-      color: darkgray;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
+/*** End Nav bar ***/
+
+/*** Footer ***/
+#footer {
+  height: 80px;
+  background-color: #f5f5f5;
+  color: #999999;
+  //position: absolute;
+  //bottom: 0;
+  width: 100%;
+}
+
+#footer p {
+  margin: 0;
+}
+
+#footer .copyright, #footer .credit {
+  padding-top: 30px;
+}
+
+/*** End Footer ***/
+
+/*** Button ***/
+$colorButton:#28BF41;
+$colorButtonToggle:#2BCC46;
+.btn-munchkin {
+  color: #FFFFFF;
+  background-color: $colorButton;
+  border-color: $colorButton;
+}
+
+
+
+.btn-munchkin:hover,
+.btn-munchkin:focus,
+.btn-munchkin:active,
+.btn-munchkin.active,
+.open .dropdown-toggle.btn-munchkin {
+  color: #FFFFFF;
+  background-color: $colorButtonToggle;
+  border-color: $colorButton;
+}
+
+.btn-munchkin:active,
+.btn-munchkin.active,
+.open .dropdown-toggle.btn-munchkin {
+  background-image: none;
+}
+
+.btn-munchkin.disabled,
+.btn-munchkin[disabled],
+fieldset[disabled] .btn-munchkin,
+.btn-munchkin.disabled:hover,
+.btn-munchkin[disabled]:hover,
+fieldset[disabled] .btn-munchkin:hover,
+.btn-munchkin.disabled:focus,
+.btn-munchkin[disabled]:focus,
+fieldset[disabled] .btn-munchkin:focus,
+.btn-munchkin.disabled:active,
+.btn-munchkin[disabled]:active,
+fieldset[disabled] .btn-munchkin:active,
+.btn-munchkin.disabled.active,
+.btn-munchkin[disabled].active,
+fieldset[disabled] .btn-munchkin.active {
+  background-color: $colorButtonToggle;
+  border-color: $colorButtonToggle;
+}
+
+.btn-munchkin.tag {
+  background-color: $colorButton;
+}
+
+/*** End Button ***/
+
+/*** Will paginate ***/
+.pagination > li > a,
+.pagination > li > span {
+  color: $bgDefault;
+  border: 0;
+  border-radius: 3px;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus {
+  color: $bgDefault;
+  background-color: #eeeeee;
+  border-color: #dddddd;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: $bgDefault;
+  border: 0;
+}
+
+.pagination {
+  margin: 0 0;
+}
+
+/*** Fixed Table header ***/
+/* http://jsfiddle.net/drueter/yqgB5/16/ */
+
+/*
+Force table width to 100%
+*/
+table.table-fixedheader {
+  width: 100%;
+}
+
+/*
+Set table elements to block mode.  (Normally they are inline).
+This allows a responsive table, such as one where columns can be stacked
+if the display is narrow.
+*/
+table.table-fixedheader,
+table.table-fixedheader>thead,
+table.table-fixedheader>tbody,
+table.table-fixedheader>thead>tr,
+table.table-fixedheader>tbody>tr,
+table.table-fixedheader>thead>tr>th,
+table.table-fixedheader>tbody>td {
+  display: block;
+}
+
+
+table.table-fixedheader>thead>tr:after,
+table.table-fixedheader>tbody>tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+/*
+When scrolling the table, actually it is only the tbody portion of the
+table that scrolls (not the entire table: we want the thead to remain
+fixed).  We must specify an explicit height for the tbody.  We include
+100px as a default, but it can be overridden elsewhere.
+
+Also, we force the scrollbar to always be displayed so that the usable
+width for the table contents doesn't change (such as becoming narrower
+when a scrollbar is visible and wider when it is not).
+*/
+table.table-fixedheader>tbody {
+  overflow-y: scroll;
+  height: 269px;
+}
+
+/*
+We really don't want to scroll the thead contents, but we want to force
+a scrollbar to be displayed anyway so that the usable width of the thead
+will exactly match the tbody.
+*/
+table.table-fixedheader>thead {
+  overflow-y: scroll;
+}
+
+/*
+For browsers that support it (webkit), we set the background color of
+the unneeded scrollbar in the thead to make it invisible.  (Setting
+visiblity: hidden defeats the purpose, as this alters the usable width
+of the thead.)
+*/
+table.table-fixedheader>thead::-webkit-scrollbar{
+  background-color: inherit;
+}
+
+/*
+We want to set <th> and <td> elements to float left.
+We also must explicitly set the width for each column (both for the <th>
+and the <td>).  We set to 20% here a default placeholder, but it can be
+overridden elsewhere.
+*/
+table.table-fixedheader>thead>tr>th,
+table.table-fixedheader>tbody>tr>td {
+  //width: 20%;
+  float: left;
+  border-bottom-width: 0;
+}
+
+/*** control bin ***/
+.control_bin {
+  display: none;
+  position: absolute;
+  top: 2px;
+  color: gray;
+  font-size: 0.9em;
+  left: 0px;
+  min-height: 25px;
+  min-width: 25px;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+.control_bin a:hover {
+  text-decoration: none;
+}
+
+.tags_list:hover .control_bin {
+  display: inline-block;
 }

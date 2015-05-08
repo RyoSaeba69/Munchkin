@@ -1,39 +1,44 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="tab-content">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :role => 'form', :class => "form"}) do |f| %>
+      <%= render "shared/error_messages", :target => resource %>
+      <div class="form-group">
+        <%= f.label :username, 'Identifiant' %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, class: 'control-label' %>
+        <%= f.email_field :email, :autocomplete => 'off', class: 'form-control' %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="form-group">
+        <%= f.label :password, class: 'control-label' %>
+        <% if @validatable %>
+            <em>(<%= @minimum_password_length %> caractères minimum)</em>
+        <% end %><br/>
+        <%= f.password_field :password, :autocomplete => "off", class: 'form-control' %>
+        <p class="help-block">
+          <small><em>(Laisser vide pour ne pas le changer.)</em></small>
+        </p>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: 'control-label' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :current_password, class: 'control-label' %>
+        <%= f.password_field :current_password, class: 'form-control' %>
+        <p class="help-block">
+          <small><em>(Requis pour confirmer la mise à jour.)</em></small>
+        </p>
+      </div>
+      <div class="form-actions"><%= f.submit "Enregistrer", :class => "btn btn-munchkin" %></div>
   <% end %>
+  <div class="form well well-lg">
+    <h3>Supprimer mon compte</h3>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <p>La suppression du compte entraîne la suppression de toutes les données enregistrées sur l'application.</p>
+    <%= button_to "Supprimer", registration_path(resource), :data => {:confirm => "Confirmez la suppression de votre compte?"}, :method => :delete, :class => 'btn btn-warning right' %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

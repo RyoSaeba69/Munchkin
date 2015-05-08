@@ -1,12 +1,6 @@
-<footer class="footer">
-  <small>
-    The Munchkin online game</a>
-    by <a href="http://www.quentinclaudon.me/">Quentin Claudon</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   '#' %></li>
-      <li><%= link_to "Contact", '#' %></li>
-    </ul>
-  </nav>
+<footer id="footer">
+  <div class="container">
+    <p class="pull-left copyright"><%= Settings.app_title %> © 2015 | <%= link_to'Aide',static_pages_help_path %></p>
+    <p class="pull-right credit">Réalisé par Quentin Claudon</p>
+  </div>
 </footer>
