@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507180844) do
+ActiveRecord::Schema.define(version: 20150508102319) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150507180844) do
     t.datetime "updated_at"
     t.string   "username"
     t.boolean  "approved",               default: false, null: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
