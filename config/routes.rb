@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'compteurs/index'
-
-  get 'compteurs/show'
-
-  get 'compteurs/edit'
-
-  get 'compteurs/new'
-
   get 'static_pages/home'
 
   devise_for :users
+  resources :editions
   resources :cartes
   resources :compteurs
   resources :users do

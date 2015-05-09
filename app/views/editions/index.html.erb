@@ -1,6 +1,6 @@
 <div class="row " role="title-row">
   <div class="col-xs-12 col-sm-4 col-md-5">
-    <h3> <%= image_tag 'kom.gif',size: "24"%>  Liste des compteurs </h3>
+    <h3><%= image_tag 'doomduck.gif',size: "24"%>  Liste des éditions</h3>
   </div>
   <div class="col-xs-12 col-sm-8 col-md-7">
     <form class="form-inline pull-right" role="form">
@@ -13,8 +13,8 @@
         </div>
       </div>
       <!--/.form-group-->
-      <%= link_to new_compteur_path, class: 'btn btn-default' do %>
-          <%= fi_icon('plus') %> Nouveau compteur
+      <%= link_to new_edition_path, class: 'btn btn-default' do %>
+          <%= fi_icon('plus') %> Nouvelle édition
       <% end %>
     </form>
   </div>
@@ -24,7 +24,7 @@
     <div class="alert alert-warning alert-dismissible fade in" role="alert">
       Resultat de la recherche pour <%= content_tag(:strong, @search) %>
       -
-      <%= link_to 'Tout afficher', compteurs_path %>
+      <%= link_to 'Tout afficher', editions_path %>
     </div>
 <% end %>
 
@@ -33,24 +33,22 @@
   <tr>
     <th>#</th>
     <th>Libelle</th>
-    <th>Edition</th>
-    <th>Image</th>
+    <th>Icône</th>
   </tr>
   </thead>
   <tbody>
-  <% if @compteurs.any? %>
-      <% @compteurs.each do |compteur| %>
+  <% if @editions.any? %>
+      <% @editions.each do |edition| %>
           <tr>
-            <td><%= link_to compteur.id, compteur_path(compteur.id) %></td>
-            <td><%= link_to compteur.libelle, compteur_path(compteur.id) %></td>
-            <td><%= compteur.edition.libelle %></td>
+            <td><%= link_to edition.id, edition_path(edition.id) %></td>
+            <td><%= link_to edition.libelle, edition_path(edition.id) %></td>
             <td>
-              <% if compteur.image.exists? %>
-                  <%= image_tag(compteur.image.url(:thumb)) %>
+              <% if edition.icon.exists? %>
+                  <%= image_tag(edition.icon.url(:thumb)) %>
               <% end %>
             </td>
-            <td> <%= link_to fi_icon('pencil'), edit_compteur_path(compteur), class: 'margin-r10', title: 'Modifier' %></td>
-            <td> <%= link_to fi_icon('trash'), compteur_path(compteur), :method => :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer cette carte ?"}, class: 'margin-r10', title: 'Supprimer' %></td>
+            <td> <%= link_to fi_icon('pencil'), edit_edition_path(edition), class: 'margin-r10', title: 'Modifier' %></td>
+            <td> <%= link_to fi_icon('trash'), edition_path(edition), :method => :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer cette edition ?"}, class: 'margin-r10', title: 'Supprimer' %></td>
           </tr>
       <% end %>
   <% else %>

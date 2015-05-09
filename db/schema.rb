@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509093732) do
+ActiveRecord::Schema.define(version: 20150509113805) do
 
   create_table "carte_types", force: true do |t|
     t.string   "libelle"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 20150509093732) do
     t.string   "libelle"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
   end
 
   create_table "users", force: true do |t|

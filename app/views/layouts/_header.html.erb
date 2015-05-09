@@ -8,20 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'MUNCHKIN', root_path, class: 'navbar-brand' %>
+
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+
         <% if user_signed_in? %>
-            <%= nav_link "Profil : #{current_user.login}", edit_user_registration_path %>
-            <li><%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class: 'navbar-link' %></li>
-        <% else %>
-            <li><%= link_to 'Connexion', new_user_session_path, class: 'navbar-link' %></li>
-        <% end %>
-      </ul>
-      <!-- Left Nav Section -->
-      <% if user_signed_in? %>
-          <ul class="nav navbar-nav">
+            <li><%= nav_link "Profil : #{current_user.login}", edit_user_registration_path %></li>
             <% if current_user.admin? %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration
@@ -31,10 +24,21 @@
                   </ul>
                 </li>
             <% end %>
+            <li><%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class: 'navbar-link' %></li>
+        <% else %>
+            <li><%= link_to 'Connexion', new_user_session_path, class: 'navbar-link' %></li>
+        <% end %>
+      </ul>
+      <%= link_to image_tag('logo.png', height: '30',width: '100'), root_path, class: 'navbar-brand' %>
+      <!-- Left Nav Section -->
+      <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
             <li class="divider"></li>
             <%= nav_link 'Bibliothèque', cartes_path, 'Bibliothèque' %>
             <li class="divider"></li>
             <%= nav_link 'Compteurs', compteurs_path, 'Compteurs' %>
+            <li class="divider"></li>
+            <%= nav_link 'Editions', editions_path, 'Editions' %>
           </ul>
       <% end %>
     </div>

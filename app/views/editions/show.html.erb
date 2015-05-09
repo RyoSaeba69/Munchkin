@@ -1,10 +1,10 @@
 <div class="row" role="title-row">
   <div class="col-sm-5">
-    <h3><%= image_tag 'promo.gif',size: "24"%> <%= @carte.libelle %></h3>
+    <h3><%= image_tag 'doomduck.gif',size: "24"%> <%= @edition.libelle %></h3>
   </div>
   <div class="col-sm-7">
     <div class="pull-right" role="menu">
-      <%= link_to cartes_path, 'class' => 'btn btn-default' do %>
+      <%= link_to editions_path, 'class' => 'btn btn-default' do %>
           <%= fi_icon('arrow-left') %> Retour
       <% end %>
     </div>
@@ -22,15 +22,7 @@
             <h4 class="no-margin"><span class="label label-default pull-right">Libelle</span></h4>
           </div>
           <div class="col-sm-6">
-            <p><%= @carte.libelle %></p>
-          </div>
-        </div>
-        <div class="row margin-t10">
-          <div class="col-sm-6">
-            <h4 class="no-margin"><span class="label label-default pull-right">Type de carte</span></h4>
-          </div>
-          <div class="col-sm-6">
-            <p><%= @carte.carte_type.libelle %></p>
+            <p><%= @edition.libelle %></p>
           </div>
         </div>
         <div class="row margin-t10">
@@ -38,21 +30,21 @@
             <h4 class="no-margin"><span class="label label-default pull-right">Créée le</span></h4>
           </div>
           <div class="col-sm-6">
-            <p><%= localize(@carte.created_at) if @carte.created_at %></p>
+            <p><%= localize(@edition.created_at) if @edition.created_at %></p>
           </div>
         </div><div class="row margin-t10">
         <div class="col-sm-6">
           <h4 class="no-margin"><span class="label label-default pull-right">Mise à jour le</span></h4>
         </div>
         <div class="col-sm-6">
-          <p><%= localize(@carte.updated_at) if @carte.updated_at %></p>
+          <p><%= localize(@edition.updated_at) if @edition.updated_at %></p>
         </div>
       </div>
       </div>
       <div class="col-sm-4">
         <p class="pull-right">
-          <% if @carte.image.exists? %>
-              <%= image_tag(@carte.image.url(:medium)) %>
+          <% if @edition.icon.exists? %>
+              <%= image_tag(@edition.icon.url(:thumb)) %>
           <% end %>
         </p>
       </div>
@@ -61,7 +53,7 @@
 
 
   <p class="form-actions">
-    <%= link_to 'Modifier', edit_carte_path(@carte), class: 'btn btn-munchkin' %>
+    <%= link_to 'Modifier', edit_edition_path(@edition), class: 'btn btn-munchkin' %>
   </p>
 </div>
 
