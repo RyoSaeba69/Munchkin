@@ -51,9 +51,39 @@
     </div>
   </fieldset>
 
-
   <p class="form-actions">
     <%= link_to 'Modifier', edit_edition_path(@edition), class: 'btn btn-munchkin' %>
   </p>
 </div>
 
+<fieldset>
+  <legend>Cartes <small>(<%=@edition.cartes.length %>)</small></legend>
+</fieldset>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Libelle</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @edition.cartes.any? %>
+      <% @edition.cartes.each do |carte| %>
+          <tr>
+            <td><%= link_to carte.id, carte_path(carte.id) %></td>
+            <td><%= link_to carte.libelle, carte_path(carte.id) %></td>
+            <td> <%= link_to fi_icon('pencil'), edit_carte_path(carte), class: 'margin-r10', title: 'Modifier' %></td>
+            <td> <%= link_to fi_icon('trash'), edit_carte_path(carte), :method => :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer cette edition ?"}, class: 'margin-r10', title: 'Supprimer' %></td>
+          </tr>
+      <% end %>
+  <% else %>
+      <tr>
+        <td colspan="8">
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" id="user-no-data">
+            <p class="text-center"> Aucune donnée à afficher</p>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

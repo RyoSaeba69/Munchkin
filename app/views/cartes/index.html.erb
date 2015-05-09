@@ -1,6 +1,6 @@
 <div class="row " role="title-row">
   <div class="col-xs-12 col-sm-4 col-md-5">
-    <h3><%= image_tag 'promo.gif',size: "24"%>  Liste des cartes</h3>
+    <h3><%= image_tag 'promo.gif',size: "24"%>  Liste des cartes <small>(<%=@cartes.length %>)</small></h3>
   </div>
   <div class="col-xs-12 col-sm-8 col-md-7">
     <form class="form-inline pull-right" role="form">
@@ -34,6 +34,7 @@
     <th>#</th>
     <th>Libelle</th>
     <th>Type de carte</th>
+    <th>Édition</th>
     <th>Image</th>
   </tr>
   </thead>
@@ -44,6 +45,7 @@
             <td><%= link_to carte.id, carte_path(carte.id) %></td>
             <td><%= link_to carte.libelle, carte_path(carte.id) %></td>
             <td><%= carte.carte_type.libelle %></td>
+            <td><%= carte.edition.libelle %></td>
             <td>
               <% if carte.image.exists? %>
                   <%= image_tag(carte.image.url(:thumb)) %>

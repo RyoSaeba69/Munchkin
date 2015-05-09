@@ -1,4 +1,4 @@
-$component-active-bg: #28BF41;
+$component-active-bg: #FFD09A;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -34,11 +34,11 @@ textarea {
 }
 
 a {
-  color: #28BF41;
+  color: #F0B673;
 }
 
 a:hover, a:active, a:focus {
-  color: #2BCC46;
+  color: #F0B673;
 }
 
 ul {
@@ -200,6 +200,11 @@ h4.num_version {
   @extend .well;
 }
 
+//bg image
+.treasure-bg{
+  background-image: image-url("treasure-bg.jpg");
+}
+
 /* header */
 
 #logo {
@@ -216,10 +221,10 @@ h4.num_version {
 /*** Nav bar ***/
 /*** Theme navbar ***/
 /*** http://work.smarchal.com/twbscolor/ ***/
-$bgDefault: #28BF41;
-$bgHighlight: #2BCC46;
-$colDefault: #ecf0f1;
-$colHighlight: #ecdbff;
+$bgDefault: #FFD09A;
+$bgHighlight: #FFD09A;
+$colDefault: #000000;
+$colHighlight: #888888;
 $dropDown: false;
 .navbar-default {
   background-color: $bgDefault;
@@ -331,8 +336,8 @@ $dropDown: false;
 /*** End Footer ***/
 
 /*** Button ***/
-$colorButton:#28BF41;
-$colorButtonToggle:#2BCC46;
+$colorButton:#FFD09A;
+$colorButtonToggle:#FFD09A;
 .btn-munchkin {
   color: #FFFFFF;
   background-color: $colorButton;
