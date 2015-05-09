@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title)
-    base_title = 'Nutri-Info'
+    base_title = 'Munchkin'
     if page_title.empty?
       base_title
     else

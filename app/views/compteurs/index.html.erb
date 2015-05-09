@@ -1,0 +1,68 @@
+<div class="row " role="title-row">
+  <div class="col-xs-12 col-sm-4 col-md-5">
+    <h3>Liste des compteurs</h3>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-7">
+    <form class="form-inline pull-right" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <%= search_field_tag 'search', @search, placeholder: "Rechercher...", class: "form-control" %>
+          <span class="input-group-btn">
+      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+        </div>
+      </div>
+      <!--/.form-group-->
+      <%= link_to new_compteur_path, class: 'btn btn-default' do %>
+          <%= fi_icon('plus') %> Nouveau compteur
+      <% end %>
+    </form>
+  </div>
+  <!--/.col-md-8-->
+</div>
+<% unless @search.blank? %>
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+      Resultat de la recherche pour <%= content_tag(:strong, @search) %>
+      -
+      <%= link_to 'Tout afficher', compteurs_path %>
+    </div>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Libelle</th>
+    <th>Edition</th>
+    <th>Image</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @compteurs.any? %>
+      <% @compteurs.each do |compteur| %>
+          <tr>
+            <td><%= link_to compteur.id, compteur_path(compteur.id) %></td>
+            <td><%= link_to compteur.libelle, compteur_path(compteur.id) %></td>
+            <td><%= compteur.edition.libelle %></td>
+            <td>
+              <% if compteur.image.exists? %>
+                  <%= image_tag(compteur.image.url(:thumb)) %>
+              <% end %>
+            </td>
+            <td> <%= link_to fi_icon('pencil'), edit_compteur_path(compteur), class: 'margin-r10', title: 'Modifier' %></td>
+            <td> <%= link_to fi_icon('trash'), compteur_path(compteur), :method => :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer cette carte ?"}, class: 'margin-r10', title: 'Supprimer' %></td>
+          </tr>
+      <% end %>
+  <% else %>
+      <tr>
+        <td colspan="8">
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" id="user-no-data">
+            <p class="text-center"> Aucune donnée à afficher</p>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

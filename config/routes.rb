@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
+
+  get 'compteurs/index'
+
+  get 'compteurs/show'
+
+  get 'compteurs/edit'
+
+  get 'compteurs/new'
+
+  get 'static_pages/home'
+
   devise_for :users
-  resources :users
+  resources :cartes
+  resources :compteurs
+  resources :users do
+    member do
+      post 'enabled'
+      post 'disabled'
+    end
+  end
   root 'static_pages#home'
   get  'static_pages/help'
   get  'static_pages/about'

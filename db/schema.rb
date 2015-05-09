@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508102319) do
+ActiveRecord::Schema.define(version: 20150509093732) do
+
+  create_table "carte_types", force: true do |t|
+    t.string   "libelle"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cartes", force: true do |t|
+    t.string   "libelle"
+    t.integer  "carte_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "edition_id"
+  end
+
+  add_index "cartes", ["carte_type_id"], name: "index_cartes_on_carte_type_id", using: :btree
+  add_index "cartes", ["edition_id"], name: "index_cartes_on_edition_id", using: :btree
+
+  create_table "compteurs", force: true do |t|
+    t.string   "libelle"
+    t.integer  "edition_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "compteurs", ["edition_id"], name: "index_compteurs_on_edition_id", using: :btree
+
+  create_table "editions", force: true do |t|
+    t.string   "libelle"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

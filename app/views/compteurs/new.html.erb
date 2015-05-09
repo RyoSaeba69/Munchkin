@@ -1,0 +1,31 @@
+<div class="row" role="title-row">
+  <div class="col-sm-5">
+    <h3>Nouveau Compteur</h3>
+  </div>
+  <div class="col-sm-7">
+    <div class="pull-right" role="menu">
+      <%= link_to compteurs_path, 'class' => 'btn btn-default' do %>
+          <%= fi_icon('arrow-left') %> Retour
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= form_for @compteur, :html => {:multipart => true, :class => "form" } do |f| %>
+    <div class="form-group <%= mark_required(f.object, :libelle) %>">
+      <%= f.label :libelle, :class => 'control-label' %>
+      <%= f.text_field :libelle,  :class => 'form-control' %>
+    </div>
+
+    <div class="form-group <%= mark_required(f.object, :edition_id) %>">
+      <%= f.label :edition_id, 'Edition' %>
+      <%= f.collection_select :edition_id, Edition.all, :id, :libelle, {}, class: 'form-control' %>
+    </div>
+
+    <div class="form-group <%= mark_required(f.object, :image) %>">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+
+    <p ><%= f.submit "Créer le compteur", class: 'btn btn-large btn-success' %></p>
+<% end %>

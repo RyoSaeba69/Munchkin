@@ -1,0 +1,72 @@
+<div class="row" role="title-row">
+  <div class="col-sm-5">
+    <h3>Liste des utilisateurs</h3>
+  </div>
+  <div class="col-sm-7">
+    <form class="form-inline pull-right" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <%= search_field_tag 'search', @search, placeholder: "Rechercher...", class: "form-control" %>
+          <span class="input-group-btn">
+      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<p>
+  <%= link_to content_tag(:span, "Tous", class: "badge #{'btn-munchkin' unless params[:approved]}"), users_path %>
+  <%= link_to content_tag(:span, "Inactif", class: "badge #{'btn-munchkin' if params[:approved]}"), users_path(approved: 'false') %>
+</p>
+<% unless @search.blank? %>
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+      Resultat de la recherche pour <%= content_tag(:strong, @search) %>
+      -
+      <%= link_to 'Tout afficher', users_path %>
+    </div>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th width="50">Id</th>
+    <th width="200">Identifiant</th>
+    <th>Email</th>
+    <th width="200">Créé le</th>
+    <th>Actif</th>
+    <th>Admin</th>
+    <th width="auto"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @users.any? %>
+      <% @users.each do |user| -%>
+          <tr class="<%= "disabled" unless user.approved? %>">
+            <td><%= user.id %></td>
+            <td><%= user.login %></td>
+            <td><%= link_to user.email, user_path(user) %> <%= content_tag(:em, '(inactif)') unless user.approved? %></td>
+            <td><%= localize(user.created_at) if user.created_at %></td>
+            <td><%= user.approved? ? 'Oui' : 'Non' %></td>
+            <td><%= user.admin? ? 'Oui' : 'Non' %></td>
+            <td>
+              <% if user.approved? %>
+                  <%= link_to fi_icon('ban-circle'), disabled_user_path(user), :method => :post, class: 'margin-r10', title: 'Désactiver' %>
+              <% else %>
+                  <%= link_to fi_icon('ok-circle'), enabled_user_path(user), :method => :post, class: 'margin-r10', title: 'Activer' %>
+              <% end %>
+              <%= link_to fi_icon('trash'), user_path(user), :method => :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer l'utilisateur?"}, class: 'margin-r10', title: 'Supprimer' %>
+            </td>
+          </tr>
+      <% end -%>
+  <% else %>
+      <tr>
+        <td colspan="8">
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" id="user-no-data">
+            <p class="text-center"> Aucune donnée à afficher</p>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
