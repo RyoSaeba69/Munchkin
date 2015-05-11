@@ -16,6 +16,31 @@
       <%= f.label :libelle, :class => 'control-label' %>
       <%= f.text_field :libelle,  :class => 'form-control' %>
     </div>
+    <div class="form-group <%= mark_required(f.object, :niveau) %>">
+      <%= f.label :niveau, :class => 'control-label' %>
+      <%= f.number_field :niveau,  :class => 'form-control' %>
+    </div>
+    <div class="form-group <%= mark_required(f.object, :tresor) %>">
+      <%= f.label :tresor,'Trésor', :class => 'control-label' %>
+      <%= f.number_field :tresor,  :class => 'form-control' %>
+    </div>
+    <div class="form-group <%= mark_required(f.object, :precombat) %>">
+      <%= f.label :precombat, :class => 'control-label' %>
+      <%= f.text_field :precombat,  :class => 'form-control' %>
+    </div>
+    <div class="form-group <%= mark_required(f.object, :incident) %>">
+      <%= f.label :incident, :class => 'control-label' %>
+      <%= f.text_field :incident,  :class => 'form-control' %>
+    </div>
+    <div class="form-group <%= mark_required(f.object, :valeur) %>">
+      <%= f.label :valeur, :class => 'control-label' %>
+      <%= f.number_field :valeur,  :class => 'form-control' %>
+    </div>
+
+    <div class="form-group <%= mark_required(f.object, :famille_carte_id) %>">
+      <%= f.label :famille_carte_id, 'Famille de carte' %>
+      <%= f.collection_select :famille_carte_id, FamilleCarte.all, :id, :libelle, {}, class: 'form-control' %>
+    </div>
 
     <div class="form-group <%= mark_required(f.object, :recette_type_id) %>">
       <%= f.label :carte_type_id, 'Type de carte' %>

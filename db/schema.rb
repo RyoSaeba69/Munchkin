@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509113805) do
+ActiveRecord::Schema.define(version: 20150510153834) do
 
   create_table "carte_types", force: true do |t|
     t.string   "libelle"
@@ -29,10 +29,17 @@ ActiveRecord::Schema.define(version: 20150509113805) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "edition_id"
+    t.integer  "niveau"
+    t.integer  "tresor"
+    t.string   "incident"
+    t.integer  "famille_carte_id"
+    t.integer  "valeur"
+    t.string   "precombat"
   end
 
   add_index "cartes", ["carte_type_id"], name: "index_cartes_on_carte_type_id", using: :btree
   add_index "cartes", ["edition_id"], name: "index_cartes_on_edition_id", using: :btree
+  add_index "cartes", ["famille_carte_id"], name: "index_cartes_on_famille_carte_id", using: :btree
 
   create_table "compteurs", force: true do |t|
     t.string   "libelle"
@@ -55,6 +62,12 @@ ActiveRecord::Schema.define(version: 20150509113805) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
+  end
+
+  create_table "famille_cartes", force: true do |t|
+    t.string   "libelle"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

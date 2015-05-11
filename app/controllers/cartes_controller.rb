@@ -57,7 +57,7 @@ class CartesController < ApplicationController
   private
 
   def carte_params
-    params.require(:carte).permit(:libelle,:image,:carte_type_id,:edition_id)
+    params.require(:carte).permit(:libelle,:image,:niveau,:tresor,:incident,:precombat,:valeur,:famille_carte_id,:carte_type_id,:edition_id)
   end
 
 end

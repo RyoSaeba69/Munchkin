@@ -34,6 +34,7 @@
     <th>#</th>
     <th>Libelle</th>
     <th>Type de carte</th>
+    <th>Famille de carte</th>
     <th>Édition</th>
     <th>Image</th>
   </tr>
@@ -45,6 +46,7 @@
             <td><%= link_to carte.id, carte_path(carte.id) %></td>
             <td><%= link_to carte.libelle, carte_path(carte.id) %></td>
             <td><%= carte.carte_type.libelle %></td>
+            <td><%= carte.famille_carte.libelle %></td>
             <td><%= carte.edition.libelle %></td>
             <td>
               <% if carte.image.exists? %>
